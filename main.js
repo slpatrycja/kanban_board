@@ -23,10 +23,10 @@ var changes = 0;
         $('ul').each(function(){
             var cur_id = $(this).attr('id');
             $(this).children().each(function(){
-                var wpis = new Note;
-                wpis.note = $(this).find('p').text();
-                wpis.status = cur_id;
-                if (wpis.note != '')
+                var entry = new Note;
+                entry.note = $(this).find('p').text();
+                entry.status = cur_id;
+                if (entry.note != '')
                     repository.add(wpis);
             });
         });
