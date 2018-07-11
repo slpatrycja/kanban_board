@@ -24,10 +24,11 @@ var changes = 0;
         
         changes = 1;
         addId+=1;
-    	var txtNewItem = $('#new_text').val();
+        var txtNewItem = $('#new_text').val();
     	var card = $(this).closest('div.container').find('ul').append('<li><div class="card"><div class="card-block"><a href="#" class="btn del">&#10006;</a><p class="card-text">'+txtNewItem+'</p></div></div></li>');
         save();
-        $(card).find('a').attr('id', addId);
+        $(card).find('.del').attr('id', addId);
+        $(card).find('.del').click(remove);
         $('#new_text').val('');
         
         return addId;
@@ -35,14 +36,15 @@ var changes = 0;
         
     });    
 
-    $(".del").click(function(){
+    $(".del").click(remove);
+
+    function remove(){
         changes = 1;
         $(this).closest('.card').remove();
         $(this).closest('div.container').find('ul').remove('.card');
         save();
-
-    });
-
+    }
+    
     function save(){
         changes = 0;
         repository.clear();
