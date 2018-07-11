@@ -13,42 +13,51 @@ var changes = 0;
         $(this).children().each(function(){
             $(this).attr('id', current_id);
         })
+        save();
       }
 
     }).disableSelection(); 
 
-    $('.save').click(function(){
-        changes = 0;
-        repository.clear();
-        $('ul').each(function(){
-            var cur_id = $(this).attr('id');
-            $(this).children().each(function(){
-                var entry = new Note;
-                entry.note = $(this).find('p').text();
-                entry.status = cur_id;
-                if (entry.note != '')
-                    repository.add(wpis);
-            });
-        });
+    
 
-    });
-
-    $('.add-button').click(function() {
+    $('#add-button').click(function() {
+        
         changes = 1;
         addId+=1;
     	var txtNewItem = $('#new_text').val();
     	var card = $(this).closest('div.container').find('ul').append('<li><div class="card"><div class="card-block"><a href="#" class="btn del">&#10006;</a><p class="card-text">'+txtNewItem+'</p></div></div></li>');
+        save();
         $(card).find('a').attr('id', addId);
         $('#new_text').val('');
+        
         return addId;
+        
+        
     });    
 
     $(".del").click(function(){
         changes = 1;
         $(this).closest('.card').remove();
         $(this).closest('div.container').find('ul').remove('.card');
+        save();
 
     });
+
+    function save(){
+        changes = 0;
+        repository.clear();
+        $('ul').each(function(){
+            var cur_id = $(this).attr('id');
+            $(this).children().each(function(){
+                var wpis = new Note;
+                wpis.note = $(this).find('p').text();
+                wpis.status = cur_id;
+                if (wpis.note != '')
+                    repository.add(wpis);
+            });
+        });
+
+    }
 
     function load() {
     

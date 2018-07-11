@@ -10,42 +10,50 @@
     <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
-
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
     <script src="main.js"></script>
     <script src="localstorage.js"></script>
     <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
-</body>
-<div>
-    
-    <div class="container" style="background-color:pink;">
-        <h2>TODO</h2>
-        <ul class="sortable connectedSortable" id="toDo">
-            
-        </ul>
-        <div class="link-div">
-            <textarea type="text" id="new_text" value=""></textarea>
-            <input type="button" name="btnAddNew" value="Add" class="add-button" />
+    <div id="container">
+            <div class="jumbotron">
+                    <h1><<----------You'd better get your work done!---------->></h1>      
+            </div>
+        <div id="body">
+            <div class="container" style="background-color:pink;">
+                <h1>TODO</h1>
+                <ul class="sortable connectedSortable" id="toDo">
+
+                </ul>
+                <div class="link-div">
+                    <textarea type="text" id="new_text" value=""  onkeydown="if (event.keyCode == 13)
+                    document.getElementById('add-button').click()"></textarea>
+                    <input type="button" name="btnAddNew" value="Add" class="add-button" id="add-button" />
+                </div>
+            </div>
+            <div class="container" style="background-color: lightgray;">
+                <h1>In Progress</h1>
+                <ul class="sortable connectedSortable" id="inProgress">
+                </ul>
+            </div>
+            <div class="container" style="background-color:rgb(76, 120, 138);">
+                <h1>Verification</h1>
+                <ul class="sortable connectedSortable" id="verification">
+                </ul>
+            </div>
+            <div class="container" style="background-color:rgb(215, 179, 219);">
+                <h1>Done</h1>
+                <ul class="sortable connectedSortable" id="done">
+                </ul>
+            </div>
+        </div>
+        <div id="footer">
+            <p>Patrycja Słabosz with Gregory&Monsters®</p>
         </div>
     </div>
-    <div class="container" style="background-color: lightgray;">
-        <h2>In Progress</h2>
-        <ul class="sortable connectedSortable" id="inProgress">
-        </ul>
-    </div>
-    <div class="container" style="background-color:rgb(76, 120, 138);">
-        <h2>Verification</h2>
-        <ul class="sortable connectedSortable" id="verification">
-        </ul>
-    </div>
-    <div class="container" style="background-color:rgb(215, 179, 219);">
-        <h2>Done</h2>
-        <ul class="sortable connectedSortable" id="done">
-        </ul>
-    </div>
-    <button class="save">Zapisz zmiany</button>
-</div>
+
+</body>
 
 </html>
